@@ -1,0 +1,87 @@
+body {
+  background-color: #fff;
+}
+.container {
+  display: block;
+  margin-left: auto; margin-right: auto;
+  width: 800px;
+  color: #777;
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.head h1 {
+  font-size: 45px;
+  font-style: bolder;
+  color: #444;
+}
+.head input[type=text].collect-to-do {
+  height: 50px;
+  font-size: 20px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 20px;
+  background-color: #eee;
+  -webkit-transition: all 0.8s ease;
+          transition: all 0.8s ease;
+  opacity: 0.2;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+.head input[type=text].collect-to-do:focus {
+  margin-bottom: 30px;
+  opacity: 1.0;
+}
+
+.commands {
+  margin-top: 2em;
+}
+
+.btn {
+  margin-right: 0.5em;
+}
+
+.badge {
+  margin-left: 1em;
+}
+.todo-container {
+  padding: 1em;
+}
+.to-do {
+  padding-left: 5px;
+  line-height: 150%;
+  font-size: 24px;
+}
+.to-do input[type=checkbox] {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  padding: 10px;
+}
+.to-do .label {
+  color: #333;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.to-do .label.done-true {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.to-do.s {
+  padding-left: 30px;
+}
+.to-do.status-empty {
+  /*background: url(/images/status-empty.png) no-repeat 0 5px;*/
+}
+.to-do.status-empty.s {
+  /*background: url(/images/status-empty-s.png) no-repeat 0 0;*/
+}
+.to-do.status-collect.s {
+  /*background: url(/images/status-collect-s.png) no-repeat 0 0;*/
+}
+#stage5px{
+  position: absolute;
+  overflow:hidden;
+  border: 1px solid red;
+}

@@ -1,0 +1,40 @@
+doctype html
+html(ng-app="todoApp")
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0')
+
+    title Mini To Do
+
+    link(href="/components/bootstrap/dist/css/bootstrap.min.css", rel="stylesheet", type="text/css")
+    link(href="/components/bootstrap/dist/css/bootstrap-theme.min.css", rel="stylesheet", type="text/css")
+    link(href="/css/reset.css", rel="stylesheet", type="text/css")
+    link(href="/css/default.css", rel="stylesheet", type="text/css")
+  body
+    div(ng-controller="todoController", onresize="console.log('11')").container
+      div.head
+        h1 Mini To Do
+        input(ng-model="todoItem", type="text", placeholder="할 일이 생각나면 여기에...", ng-on-enter="enterTodo()", autofocus="true").collect-to-do
+      div.todos
+        ul.nav.nav-tabs
+          li.active
+            a(href="#live", data-toggle="tab") Live
+              span.badge {{remaining()}}
+          li
+            a(href="#archive", data-toggle="tab") Archive
+        .tab-content
+          #live.tab-pane.active
+            ul.todo-container
+              li(ng-repeat="todo in todos").to-do
+                input(type="checkbox", ng-model="todo.done")
+                span(class="label done-{{todo.done}}") {{todo.name}}
+          #archive.tab-pane
+        .commands
+          button(type="button").btn.btn-default Clear
+          button(type="button").btn.btn-success Archive
+
+
+    script(type="text/javascript", src="/components/jquery/dist/jquery.min.js")
+    script(type="text/javascript", src="/components/bootstrap/dist/js/bootstrap.min.js")
+    script(type="text/javascript", src="/components/angular/angular.min.js")
+    script(type="text/javascript", src="/js/todo.js")
