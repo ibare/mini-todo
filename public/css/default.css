@@ -63,6 +63,10 @@ body {
   padding-left: 10px;
   padding-top: 5px;
 }
+.to-do .done-stamp {
+  font-size: 12px;
+  color: #999;
+}
 .to-do .label.done-true {
   text-decoration: line-through;
   color: #ccc;

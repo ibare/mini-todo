@@ -8,6 +8,7 @@ html(ng-app="todoApp")
 
     link(href="/components/bootstrap/dist/css/bootstrap.min.css", rel="stylesheet", type="text/css")
     link(href="/components/bootstrap/dist/css/bootstrap-theme.min.css", rel="stylesheet", type="text/css")
+    link(href="/components/nprogress/nprogress.css", rel="stylesheet", type="text/css")
     link(href="/css/reset.css", rel="stylesheet", type="text/css")
     link(href="/css/default.css", rel="stylesheet", type="text/css")
   body
@@ -19,22 +20,35 @@ html(ng-app="todoApp")
         ul.nav.nav-tabs
           li.active
             a(href="#live", data-toggle="tab") Live
-              span.badge {{remaining()}}
+              span.badge {{remainingTodo()}}
           li
             a(href="#archive", data-toggle="tab") Archive
+              span.badge {{archives.length}}
         .tab-content
           #live.tab-pane.active
             ul.todo-container
               li(ng-repeat="todo in todos").to-do
-                input(type="checkbox", ng-model="todo.done")
+                input(type="checkbox", ng-model="todo.done", ng-change="changeStatus($index)")
                 span(class="label done-{{todo.done}}") {{todo.name}}
+                span(ng-show="todo.done").done-stamp {{ todo.timeago }}
+                button(type="button", ng-show="isEdit", ng-click="deleteItem($index)").btn.btn-default.btn-xs
+                  span.glyphicon.glyphicon-trash
           #archive.tab-pane
+            ul.todo-container
+              li(ng-repeat="todo in archives").to-do
+                input(type="checkbox", checked="true", disabled="true")
+                span(class="label done-{{todo.done}}") {{todo.name}}
+                span.done-stamp {{ todo.timeago }}
         .commands
-          button(type="button").btn.btn-default Clear
-          button(type="button").btn.btn-success Archive
+          button(type="button", ng-click="archive()").btn.btn-success Archive
+          button(type="button", ng-click="toogleEditMode()").btn.btn-danger Edit
+          button(type="button", ng-click="clearArchive()").btn.btn-danger Clear Archive
 
 
     script(type="text/javascript", src="/components/jquery/dist/jquery.min.js")
     script(type="text/javascript", src="/components/bootstrap/dist/js/bootstrap.min.js")
     script(type="text/javascript", src="/components/angular/angular.min.js")
+    script(type="text/javascript", src="/components/nprogress/nprogress.js")
+    script(type="text/javascript", src="/components/moment/moment.js")
+    script(type="text/javascript", src="/components/underscore/underscore.js")
     script(type="text/javascript", src="/js/todo.js")

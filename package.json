@@ -8,6 +8,12 @@
   "dependencies": {
     "express": "3.5.0",
     "jade": "*",
-    "mongoose": "~3.8.8"
+    "mongoose": "~3.8.8",
+    "debug": "~0.7.4",
+    "async": "~0.2.10"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "supertest": "~0.10.0"
   }
 }
