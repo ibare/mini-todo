@@ -10,7 +10,7 @@ angular.module('todoApp', [])
           event.preventDefault();
         }
       });
-    }
+    };
   });
 
 var todoController = function($scope, $http) {
@@ -124,7 +124,7 @@ var todoController = function($scope, $http) {
 
           NProgress.done();
         });
-  }
+  };
 
   $scope.deleteItem = function(index) {
     NProgress.start();
@@ -155,4 +155,4 @@ var todoController = function($scope, $http) {
   };
 
   $scope.init();
-}
+};

@@ -92,15 +92,17 @@ exports.show = function(req, res) {
       return res.status(404).end();
 
     res.json(200, todo);
-  })
+  });
 };
 
 exports.new = function(req, res) {
+  var todoData, newTodo;
+
   console.log('new');
 
   try {
-    var todoData = req.body.todo;
-    var newTodo = new Todo(todoData);
+    todoData = req.body.todo;
+    newTodo = new Todo(todoData);
   } catch (ex) {
 
     console.error(ex, req.body);
@@ -141,7 +143,7 @@ exports.edit = function(req, res) {
         return res.status(500).end();
 
       res.json(200, todo);
-    })
+    });
   });
 };
 
@@ -151,5 +153,5 @@ exports.delete = function(req, res) {
       return res.status(500).end();
 
     res.status(200).end();
-  })
+  });
 };
