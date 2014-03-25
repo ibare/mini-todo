@@ -1,5 +1,9 @@
 'use strict';
-
+/*
+ * node app.js
+ * DEBUG=* node app.js | DEBUG="todo,archive" node app.js
+ * NODE_ENV=production node app.js
+ */
 /**
  * Module dependencies.
  */
