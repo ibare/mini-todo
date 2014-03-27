@@ -19,12 +19,27 @@ module.exports = function(grunt) {
           'public/js/todo.min.js': ['public/js/todo.js']
         }
       }
+    },
+    cssmin: {
+      combine: {
+        files: {
+          'public/css/todo.min.css': ['<%= concat.cssdist.dest %>']
+        }
+      }
+    },
+    concat: {
+      cssdist: {
+        src: ['public/css/reset.css', 'public/css/default.css'],
+        dest: 'public/css/todo.css'
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['uglify','concat','cssmin']);
   grunt.registerTask('code-check', ['jshint']);
 };
