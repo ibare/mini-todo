@@ -10,10 +10,14 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var env = process.env.NODE_ENV || 'development';
+var config = require('./config')[env];
 
 // Connect mongodb
 var connectMongoDB = function () {
-  mongoose.connect('mongodb://localhost:27017/todo');
+  if(env === 'development')
+    mongoose.connect(config.db.uri);
+  else
+    mongoose.connect(config.db.uri, config.db.user, config.db.password);
 };
 
 mongoose.connection.on('connected', function () {
@@ -49,7 +53,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
+// app.use(express.bodyParser());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -75,7 +79,6 @@ app.get ('/api/todos/archive', todo.archiveList);
 app.post('/api/todos/archive', todo.moveToArchive);
 app.del ('/api/todos/archive', todo.clearArchive);
 app.get ('/api/todos/:id', todo.show);
-// app.get ('/api/todos/archive', todo.archiveList); <== 순서가 이곳에 있다면?
 app.put ('/api/todos/:id', todo.edit);
 app.del ('/api/todos/:id', todo.delete);
 

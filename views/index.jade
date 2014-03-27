@@ -14,16 +14,16 @@ html(ng-app="todoApp")
   body
     div(ng-controller="todoController", onresize="console.log('11')").container
       div.head
-        h1 Mini To Do
+        h3 MEAN Stack TO DO앱 셈플
         input(ng-model="todoItem", type="text", placeholder="할 일이 생각나면 여기에...", ng-on-enter="enterTodo()", autofocus="true").collect-to-do
       div.todos
         ul.nav.nav-tabs
           li.active
-            a(href="#live", data-toggle="tab") Live
-              span.badge {{remainingTodo()}}
+            a(href="#live", data-toggle="tab") Inbox
+              span(ng-show="remainingTodo()").badge.badge-inbox {{remainingTodo()}}
           li
             a(href="#archive", data-toggle="tab") Archive
-              span.badge {{archives.length}}
+              span(ng-show="archives.length").badge.badge-archive {{archives.length}}
         .tab-content
           #live.tab-pane.active
             ul.todo-container

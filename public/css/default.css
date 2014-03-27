@@ -89,3 +89,9 @@ body {
   overflow:hidden;
   border: 1px solid red;
 }
+.badge-inbox {
+  background-color: #009cff;
+}
+.badge-archive {
+  background-color: #cccccc;
+}
